@@ -143,6 +143,14 @@ function layerClickHandler (e) {
 
     marker.bindPopup(template);
     marker.openPopup();
+
+     // Delete the marker upon clicking on Delete marker button
+    var buttonDelete = L.DomUtil.get('button-delete');
+    L.DomEvent.addListener(buttonDelete, 'click', function (e) {
+      confirm("Are you sure want to delete this marker?");
+      marker.closePopup();
+      map.removeLayer(marker);
+    });
     L.DomUtil.get('value-name').textContent = marker.feature.properties.name;
     L.DomUtil.get('value-type').textContent = marker.feature.properties.type;
     L.DomUtil.get('value-remarks').textContent = marker.feature.properties.remarks;

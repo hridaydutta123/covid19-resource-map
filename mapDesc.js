@@ -108,7 +108,6 @@ geojsonData.on("value", function(snapshot) {
       ' + childData.remarks + '</td>\
     </tr>\
   </table>\
-  <button id="button-del" type="button">Delete marker</button>\
   ');
   }
     }).addTo(map);

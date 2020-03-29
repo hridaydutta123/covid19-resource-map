@@ -7,24 +7,39 @@
 	span {
 	  content: "\2190";
 	}
+  p.dotted {border-style: dotted;}
+p.dashed {border-style: dashed;}
+p.solid {border-style: solid;}
+p.double {border-style: double;}
+p.groove {border-style: groove;}
+p.ridge {border-style: ridge;}
+p.inset {border-style: inset;}
+p.outset {border-style: outset;}
+p.none {border-style: none;}
+p.hidden {border-style: hidden;}
+p.mix {border-style: dotted dashed solid double;}
+
     </style>
 
   </head>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
-        <div class="navbar-collapse collapse" style="text-align: center;">
-          <h4>Covid Crisis Map</h4>
+        <div class="navbar-collapse collapse" style="text-align: center;font-family:verdana;">
+          <h2 style="background-color:DodgerBlue;">COVID-19 Crisis Map</h2>
         </div>
-          <b>1.</b> The web app will automatically point the map to your current location.<br>
-          <b>2.</b> You can also click on the search button on the left side to point the map to any other location. Search queries can be any state, city, street etc. <br>
-          <b>3.</b> Mouse click will create a marker. Click on the marker to enter the properties of the resource. Current properties are: Name, Type (Grocery Shop, Hospital, Gas station), Opening time, Closing time, Phone number and Remarks.<br>
-          <b>4.</b> Click on Save Changes button to save the properties of the marker. <br>
-          <b>5. </b> The marker will be saved on the same location. 
+        
+        <p class="groove" style="font-family:courier;">
+          <b>&nbsp;1.</b> The web app will automatically point to your current location in the map.<br>
+          <b>&nbsp;2.</b> You can click on the search button on the left side to point the map to a specific location. Search queries can be any state, city, street etc. <br>
+          <b>&nbsp;3.</b> Mouse click will create a marker. Click on the marker to enter the properties of the resource. Current properties are: Resource Name, Type (Grocery Shop, Hospital, Gas station), Opening time, Closing time, Phone number, Added By and Remarks.<br>
+          <b>&nbsp;4.</b> Click on Save Changes button to save the properties of the marker. <br>
+          <b>&nbsp;5. </b> The marker will be saved on the same location displaying the resource. 
+          </p>
         </div>
       </div>
     </div>
-    </div>
+    </div></br>
     <div id="map"></div>
 
     <div class='pointer'></div>

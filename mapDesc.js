@@ -1,4 +1,5 @@
 // Add form - new resource using marker (form in marker popup) 
+
 var template = '<form id="popup-form">\
   <table class="popup-table">\
     <tr class="popup-table-row">\
@@ -26,6 +27,11 @@ var template = '<form id="popup-form">\
       <th class="popup-table-header">Phone number:</th>\
       <td id="value-phone">\
       <input id="phone" type="text" value="None"/></td>\
+    </tr>\
+    <tr class="popup-table-row">\
+      <th class="popup-table-header">Added by:</th>\
+      <td id="value-addedby">\
+      <input id="addedby" type="text"/></td>\
     </tr>\
     <tr class="popup-table-row">\
       <th class="popup-table-header">Remarks:</th>\
@@ -103,6 +109,16 @@ geojsonData.on("value", function(snapshot) {
       ' + childData.phone + '</td>\
     </tr>\
     <tr class="popup-table-row">\
+      <th class="popup-table-header">Added by:</th>\
+      <td id="value-addedby">\
+      ' + childData.addedby + '</td>\
+    </tr>\
+    <tr class="popup-table-row">\
+      <th class="popup-table-header">Added on:</th>\
+      <td id="value-addedon">\
+      ' + childData.addedon + '</td>\
+    </tr>\
+    <tr class="popup-table-row">\
       <th class="popup-table-header">Remarks:</th>\
       <td id="value-remarks">\
       ' + childData.remarks + '</td>\
@@ -132,7 +148,8 @@ function layerClickHandler (e) {
     L.DomUtil.get('value-remarks').textContent = marker.feature.properties.remarks;
     L.DomUtil.get('value-opening').textContent = marker.feature.properties.opening;
     L.DomUtil.get('value-closing').textContent = marker.feature.properties.closing;
-    L.DomUtil.get('value-phone').textContent = marker.feature.properties.phone;
+    L.DomUtil.get('value-phone').textContent = marker.feature.properties.phone;    
+    L.DomUtil.get('value-addedby').textContent = marker.feature.properties.addedby;
     L.DomUtil.get('button-submit').style.display = "none";
     marker.unbindPopup();
   }
@@ -151,7 +168,8 @@ function layerClickHandler (e) {
       var entity_opening = L.DomUtil.get('opening').value;
       var entity_closing = L.DomUtil.get('closing').value;
       var entity_phone = L.DomUtil.get('phone').value;
-
+      var entity_addedby = L.DomUtil.get('addedby').value;
+      var entity_addedon = new Date().toISOString().slice(0,10);
 
       L.DomUtil.get('value-name').textContent = entity_name;
       L.DomUtil.get('value-type').textContent = entity_type;
@@ -159,6 +177,7 @@ function layerClickHandler (e) {
       L.DomUtil.get('value-opening').textContent = entity_opening;
       L.DomUtil.get('value-closing').textContent = entity_closing;
       L.DomUtil.get('value-phone').textContent = entity_phone;
+      L.DomUtil.get('value-addedby').textContent = entity_addedby;
       L.DomUtil.get('button-submit').style.display = "none";
 
       // Add the entered data to marker properties
@@ -167,6 +186,8 @@ function layerClickHandler (e) {
       marker.feature.properties.remarks = entity_remarks;
       marker.feature.properties.opening = entity_opening;
       marker.feature.properties.closing = entity_closing;
+      marker.feature.properties.addedby = entity_addedby;
+      marker.feature.properties.addedon = entity_addedon;
       marker.feature.properties.phone = entity_phone;
 
       // Add new entry to firebase
@@ -178,6 +199,8 @@ function layerClickHandler (e) {
         opening: entity_opening,
         closing: entity_closing,
         phone:  entity_phone,
+        addedby:  entity_addedby,
+        addedon: entity_addedon,
         remarks: entity_remarks
       });
 

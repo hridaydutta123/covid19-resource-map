@@ -15,6 +15,8 @@ This is a work in progress. Because there’s currently only myself working on t
 * delete marker support
 * layout styling
 * make marker draggable
+* added by
+* added on
 
 ## Donation  
   
